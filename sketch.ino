@@ -1,6 +1,17 @@
 #include <arduinoFFT.h>
 
-#define SAMPLES 256              // Must be a power of 2
+
+#define FASTADC 1
+// defines for setting and clearing register bits
+#ifndef cbi
+#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#endif
+#ifndef sbi
+#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
+#endif
+
+
+#define SAMPLES 128              // Must be a power of 2
 #define SAMPLING_FREQUENCY 10000 // Hz, must be less than 10000 due to ADC limitations
 
 const int USE_SONAR = 0; // Set to 1 to use sonar, 0 to disregard sonar and send data every 2 seconds
@@ -26,6 +37,13 @@ bool fftRunning = false;
 unsigned long lastSendTime = 0;
 
 void setup() {
+
+    #if FASTADC
+        // set prescale to 16 (faster adc)
+        sbi(ADCSRA,ADPS2) ;
+        cbi(ADCSRA,ADPS1) ;
+        cbi(ADCSRA,ADPS0) ;
+    #endif
     Serial.begin(115200);
     analogReference(INTERNAL1V1);  // Use the internal 1.1V reference voltage
     pinMode(trigPin, OUTPUT);
