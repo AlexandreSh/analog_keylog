@@ -60,7 +60,7 @@ void setup() {
        ) ;
 
     Serial.begin(115200);
-    analogReference(2); // Use the internal 1.1V reference voltage
+    //analogReference(INTERNAL1V1);  // Use the internal 1.1V reference voltage
     pinMode(trigPin, 0x1);
     pinMode(echoPin, 0x0);
 

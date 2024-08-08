@@ -56,7 +56,7 @@ void setup() {
         cbi(ADCSRA,ADPS0) ;
     #endif
     Serial.begin(115200);
-    analogReference(INTERNAL1V1);  // Use the internal 1.1V reference voltage
+    //analogReference(INTERNAL1V1);  // Use the internal 1.1V reference voltage
     pinMode(trigPin, OUTPUT);
     pinMode(echoPin, INPUT);
     

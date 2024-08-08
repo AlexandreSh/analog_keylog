@@ -145,71 +145,11 @@
    "-DARDUINO_ARCH_AVR",
    "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
    "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
-   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/HardwareSerial0.cpp",
-   "-o",
-   "/home/alex/Arduino/vscode/mega/build/core/HardwareSerial0.cpp.o"
-  ],
-  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/HardwareSerial0.cpp"
- },
- {
-  "directory": "/home/alex/Arduino/vscode/mega",
-  "arguments": [
-   "/home/alex/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega2560",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_MEGA2560",
-   "-DARDUINO_ARCH_AVR",
-   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
-   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
    "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/HardwareSerial1.cpp",
    "-o",
    "/home/alex/Arduino/vscode/mega/build/core/HardwareSerial1.cpp.o"
   ],
   "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/HardwareSerial1.cpp"
- },
- {
-  "directory": "/home/alex/Arduino/vscode/mega",
-  "arguments": [
-   "/home/alex/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega2560",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_MEGA2560",
-   "-DARDUINO_ARCH_AVR",
-   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
-   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
-   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/HardwareSerial2.cpp",
-   "-o",
-   "/home/alex/Arduino/vscode/mega/build/core/HardwareSerial2.cpp.o"
-  ],
-  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/HardwareSerial2.cpp"
  },
  {
   "directory": "/home/alex/Arduino/vscode/mega",
@@ -265,6 +205,36 @@
    "-DARDUINO_ARCH_AVR",
    "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
    "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
+   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/HardwareSerial2.cpp",
+   "-o",
+   "/home/alex/Arduino/vscode/mega/build/core/HardwareSerial2.cpp.o"
+  ],
+  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/HardwareSerial2.cpp"
+ },
+ {
+  "directory": "/home/alex/Arduino/vscode/mega",
+  "arguments": [
+   "/home/alex/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega2560",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_MEGA2560",
+   "-DARDUINO_ARCH_AVR",
+   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
+   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
    "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/IPAddress.cpp",
    "-o",
    "/home/alex/Arduino/vscode/mega/build/core/IPAddress.cpp.o"
@@ -295,11 +265,11 @@
    "-DARDUINO_ARCH_AVR",
    "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
    "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
-   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/PluggableUSB.cpp",
+   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/HardwareSerial0.cpp",
    "-o",
-   "/home/alex/Arduino/vscode/mega/build/core/PluggableUSB.cpp.o"
+   "/home/alex/Arduino/vscode/mega/build/core/HardwareSerial0.cpp.o"
   ],
-  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/PluggableUSB.cpp"
+  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/HardwareSerial0.cpp"
  },
  {
   "directory": "/home/alex/Arduino/vscode/mega",
@@ -330,6 +300,36 @@
    "/home/alex/Arduino/vscode/mega/build/core/Print.cpp.o"
   ],
   "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/Print.cpp"
+ },
+ {
+  "directory": "/home/alex/Arduino/vscode/mega",
+  "arguments": [
+   "/home/alex/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega2560",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_MEGA2560",
+   "-DARDUINO_ARCH_AVR",
+   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
+   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
+   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/PluggableUSB.cpp",
+   "-o",
+   "/home/alex/Arduino/vscode/mega/build/core/PluggableUSB.cpp.o"
+  ],
+  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/PluggableUSB.cpp"
  },
  {
   "directory": "/home/alex/Arduino/vscode/mega",
@@ -472,36 +472,6 @@
    "-DARDUINO_ARCH_AVR",
    "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
    "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
-   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/WMath.cpp",
-   "-o",
-   "/home/alex/Arduino/vscode/mega/build/core/WMath.cpp.o"
-  ],
-  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/WMath.cpp"
- },
- {
-  "directory": "/home/alex/Arduino/vscode/mega",
-  "arguments": [
-   "/home/alex/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega2560",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_MEGA2560",
-   "-DARDUINO_ARCH_AVR",
-   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
-   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
    "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/WString.cpp",
    "-o",
    "/home/alex/Arduino/vscode/mega/build/core/WString.cpp.o"
@@ -532,11 +502,71 @@
    "-DARDUINO_ARCH_AVR",
    "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
    "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
+   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/WMath.cpp",
+   "-o",
+   "/home/alex/Arduino/vscode/mega/build/core/WMath.cpp.o"
+  ],
+  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/WMath.cpp"
+ },
+ {
+  "directory": "/home/alex/Arduino/vscode/mega",
+  "arguments": [
+   "/home/alex/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega2560",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_MEGA2560",
+   "-DARDUINO_ARCH_AVR",
+   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
+   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
    "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/abi.cpp",
    "-o",
    "/home/alex/Arduino/vscode/mega/build/core/abi.cpp.o"
   ],
   "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/abi.cpp"
+ },
+ {
+  "directory": "/home/alex/Arduino/vscode/mega",
+  "arguments": [
+   "/home/alex/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega2560",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_MEGA2560",
+   "-DARDUINO_ARCH_AVR",
+   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
+   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
+   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp",
+   "-o",
+   "/home/alex/Arduino/vscode/mega/build/core/new.cpp.o"
+  ],
+  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp"
  },
  {
   "directory": "/home/alex/Arduino/vscode/mega",
@@ -598,36 +628,6 @@
  {
   "directory": "/home/alex/Arduino/vscode/mega",
   "arguments": [
-   "/home/alex/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega2560",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_MEGA2560",
-   "-DARDUINO_ARCH_AVR",
-   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
-   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
-   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp",
-   "-o",
-   "/home/alex/Arduino/vscode/mega/build/core/new.cpp.o"
-  ],
-  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp"
- },
- {
-  "directory": "/home/alex/Arduino/vscode/mega",
-  "arguments": [
    "/home/alex/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-gcc",
    "-c",
    "-g",
@@ -651,6 +651,33 @@
    "/home/alex/Arduino/vscode/mega/build/core/wiring.c.o"
   ],
   "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/wiring.c"
+ },
+ {
+  "directory": "/home/alex/Arduino/vscode/mega",
+  "arguments": [
+   "/home/alex/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-gcc",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu11",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-MMD",
+   "-flto",
+   "-fno-fat-lto-objects",
+   "-mmcu=atmega2560",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_MEGA2560",
+   "-DARDUINO_ARCH_AVR",
+   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
+   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
+   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/wiring_digital.c",
+   "-o",
+   "/home/alex/Arduino/vscode/mega/build/core/wiring_digital.c.o"
+  ],
+  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/wiring_digital.c"
  },
  {
   "directory": "/home/alex/Arduino/vscode/mega",
@@ -700,11 +727,11 @@
    "-DARDUINO_ARCH_AVR",
    "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
    "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
-   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/wiring_digital.c",
+   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/wiring_pulse.c",
    "-o",
-   "/home/alex/Arduino/vscode/mega/build/core/wiring_digital.c.o"
+   "/home/alex/Arduino/vscode/mega/build/core/wiring_pulse.c.o"
   ],
-  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/wiring_digital.c"
+  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/wiring_pulse.c"
  },
  {
   "directory": "/home/alex/Arduino/vscode/mega",
@@ -728,33 +755,6 @@
    "/home/alex/Arduino/vscode/mega/build/core/wiring_pulse.S.o"
   ],
   "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/wiring_pulse.S"
- },
- {
-  "directory": "/home/alex/Arduino/vscode/mega",
-  "arguments": [
-   "/home/alex/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-gcc",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu11",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-MMD",
-   "-flto",
-   "-fno-fat-lto-objects",
-   "-mmcu=atmega2560",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_MEGA2560",
-   "-DARDUINO_ARCH_AVR",
-   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
-   "-I/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
-   "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/wiring_pulse.c",
-   "-o",
-   "/home/alex/Arduino/vscode/mega/build/core/wiring_pulse.c.o"
-  ],
-  "file": "/home/alex/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/wiring_pulse.c"
  },
  {
   "directory": "/home/alex/Arduino/vscode/mega",
