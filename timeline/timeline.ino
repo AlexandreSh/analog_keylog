@@ -7,11 +7,15 @@
 #ifndef sbi
 #define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
 #endif
-
+const int decayFactor = 99; // Represents 0.99 as an integer (0.99 * 100)
+const int scaleFactor = 100; // Scaling factor to maintain precision
 const int numSensors = 2; //8;
 int analogPins[numSensors] = {A0, A1};//, A2, A3, A4, A5, A6, A7};
 int maxVals[numSensors] = {0, 0};//, 0, 0, 0, 0, 0, 0};
 
+
+
+void updateMaxVals(int i);
 void setup() {
     #if FASTADC
         // set prescale to 16 (faster adc)
@@ -26,13 +30,14 @@ void setup() {
     }
 }
 
+
 void loop() {
     for (int i = 0; i < numSensors; i++) {
         int sensorValue = analogRead(analogPins[i]);
         if (sensorValue > maxVals[i]) {
             maxVals[i] = sensorValue;
         }else{
-            maxVals[i] = maxVals[i] - 1;
+           updateMaxVals(maxVals[i]);
         }
         Serial.print(sensorValue);
         Serial.print(","); // Use comma as a delimiter
@@ -43,4 +48,7 @@ void loop() {
     }
     Serial.println(); // Move to the next line after printing all sensor values
     delay(20); // Short delay to make the plot smoother
+}
+void updateMaxVals(int i) {
+  maxVals[i] = (maxVals[i] * decayFactor) / scaleFactor;
 }
