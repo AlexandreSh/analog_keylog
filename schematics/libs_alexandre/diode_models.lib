@@ -1,0 +1,2 @@
+* Zener Diode 2.4V Model
+.model DZ2V4 D (BV=2.4 IBV=0.001)

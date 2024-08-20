@@ -12,11 +12,6 @@
 #define SAMPLING_FREQUENCY 10000 // Hz, must be less than 10000 due to ADC limitations
 ArduinoFFT<float> FFT = ArduinoFFT<float>(vReal, vImag, SAMPLES, SAMPLING_FREQUENCY);
 
-
-const int USE_SONAR = 0; // Set to 1 to use sonar, 0 to disregard sonar and send data every 2 seconds
-const int trigPin = 9;
-const int echoPin = 10;
-
 float vReal[SAMPLES];
 float vImag[SAMPLES];
 unsigned int sampling_period_us;
@@ -55,15 +50,11 @@ volatile bool dominioTempo = false;
 
 unsigned long microseconds;
 const unsigned long TIMEOUT = 180000; // Timeout in milliseconds (180 seconds)
-const float TOLERANCE = 0.05; // 5% tolerance
-unsigned long lastChangeTime = 0;
-unsigned int lastDistance = 0;
 bool fftRunning = false;
 
 unsigned long lastSendTime = 0;
 
 void setup() {
-
     #if FASTADC
         // set prescale to 16 (faster adc)
         sbi(ADCSRA,ADPS2) ;
@@ -72,51 +63,15 @@ void setup() {
     #endif
     Serial.begin(115200);
     analogReference(INTERNAL1V1);  // Use the internal 1.1V reference voltage
-    pinMode(trigPin, OUTPUT);
-    pinMode(echoPin, INPUT);
     sampling_period_us = round(1000000 * (1.0 / SAMPLING_FREQUENCY));
-    if (USE_SONAR) {
-        lastChangeTime = millis();
-        lastDistance = measureDistance();
-    }
     Timer1.Initialize(intervaloMedicao * 1000); //interrupção para rodar leituras no dominio do tempo
     Timer1.attachInterrupt(timerIsr);
 }
 
 void loop() {
-    if (USE_SONAR) {
-        unsigned int distance = measureDistance();
-
-        if (distance > 0 && (abs(distance - lastDistance) > lastDistance * TOLERANCE)) {
-        // Distance changed significantly
-        lastChangeTime = millis();
-        lastDistance = distance;
-        fftRunning = true;
-        Serial.println("START");
-        }
-
-        if (fftRunning) {
-        if (millis() - lastChangeTime >= TIMEOUT) {
-            // Timeout reached, halt FFT and sensor operations
-            fftRunning = false;
-            Serial.println("HALT");
-        } else {
-            performFFT();
-        }
-        } else {
-        // Check for new significant distance change to resume operations
-        if (distance > 0 && (abs(distance - lastDistance) > lastDistance * TOLERANCE)) {
-            lastChangeTime = millis();
-            lastDistance = distance;
-            fftRunning = true;
-            Serial.println("START");
-        }
-        }
-    } else {
-        if (millis() - lastSendTime >= 2000) { // dominio da frequencia a cada 2 segundos
-        performFFT();
-        lastSendTime = millis();
-        }
+    if (millis() - lastSendTime >= 2000) { // dominio da frequencia a cada 2 segundos
+    performFFT();
+    lastSendTime = millis();
     }
     if(dominioTempo){
         funcTempoSlo();
@@ -157,24 +112,6 @@ void funcTempoFast(int i, int newValue) {                       //atualiza o má
         lastValTmp = micros();
     }
     return;
-}
-
-unsigned int measureDistance() {
-    long duration, distance;
-
-    // Send a 10us pulse to trigger the HC-SR04
-    digitalWrite(trigPin, LOW);
-    delayMicroseconds(2);
-    digitalWrite(trigPin, HIGH);
-    delayMicroseconds(10);
-    digitalWrite(trigPin, LOW);
-
-    // Measure the duration of the echo pulse
-    duration = pulseIn(echoPin, HIGH);
-
-    // Calculate the distance in centimeters
-    distance = (duration / 2) / 29.1;
-    return distance;
 }
 
 void performFFT() {

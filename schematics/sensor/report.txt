@@ -1,0 +1,1 @@
+Change symbol V1 from 'Simulation_SPICE:VSIN' to 'Simulation_SPICE:VSIN': OK
