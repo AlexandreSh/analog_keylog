@@ -1,5 +1,5 @@
 #include <arduinoFFT.h>
-#include <timerOne.h>
+#include <TimerOne.h>
 #define FASTADC 1
 // defines for setting and clearing register bits
 #ifndef cbi
@@ -10,14 +10,79 @@
 #endif
 #define SAMPLES 128              // Must be a power of 2
 #define SAMPLING_FREQUENCY 10000 // Hz, must be less than 10000 due to ADC limitations
-ArduinoFFT<float> FFT = ArduinoFFT<float>(vReal, vImag, SAMPLES, SAMPLING_FREQUENCY);
 
 float vReal[SAMPLES];
 float vImag[SAMPLES];
+ArduinoFFT<float> FFT = ArduinoFFT<float>(vReal, vImag, SAMPLES, SAMPLING_FREQUENCY);
 unsigned int sampling_period_us;
 
 const unsigned int tamanhoFila = 10;
-class Queue;
+
+
+#ifndef INT_MIN
+#define INT_MIN (-32768) // Add this line if using Arduino environment
+#endif
+
+class Queue{
+    public:
+        int front, rear, size;
+        unsigned capacity;
+        int* array;
+    public:
+        Queue(unsigned capacity){
+            this->capacity = capacity;
+            front = size = 0;
+            rear = capacity - 1;
+            array = new int[this->capacity];
+        }
+        ~Queue(){
+            delete[] array;
+        }
+        bool isFull(){
+            return (size == capacity);
+        }
+        bool isEmpty(){
+            return(size == 0);
+        }
+        void enqueue(int item){
+            if(isFull()){
+                //faz algo se a fila estiver cheia
+                dequeue();
+                return;
+            }
+            rear = (rear + 1)%capacity;
+            array[rear] = item;
+            size = size + 1;
+        }
+        int dequeue(){
+            if (size == 1) {
+                // If the queue has only one item left, don't actually remove it
+                return array[front];
+            }
+            if(isEmpty()){
+                //faz algo se a fila estiver vazia
+                return INT_MIN;
+            }
+            int item = array[front];
+            front = (front + 1)%capacity;
+            size = size - 1;
+            return item;
+        }   
+        int frontItem(){
+            if(isEmpty()){
+                return INT_MIN;
+            }
+            return array[front];
+        }
+        int rearItem(){
+            if(isEmpty()){
+                return INT_MIN;
+            }
+            return array[rear];
+        }
+};
+
+//class Queue;
 struct SensorPz {
     //int pin;
     int maxVal;
@@ -27,17 +92,20 @@ struct SensorPz {
     const char type; //diametro do sensor
     Queue filaLeituras; //fila para os dados para o serial (armazenar picos numa fila?)
     Queue filaSmooth; //fila para os dados para o serial (armazenar picos numa fila?)
-    SensorPz(char t, unsigned capacity1 = tamanhoFila, unsigned capacity2 = tamanhoFila): type(t), filaLeituras(capacity1), filaSmooth(capacity2) {} // virou POO?
+    /* SensorPz(char t, unsigned capacity1 = tamanhoFila, unsigned capacity2 = tamanhoFila): type(t), filaLeituras(capacity1), filaSmooth(capacity2) {} // virou POO?
+}; */
+  SensorPz(int maxV, int smoothV, unsigned long lastPeak, unsigned long lastVal, char t, unsigned capacity1 = tamanhoFila, unsigned capacity2 = tamanhoFila)
+        : maxVal(maxV), smoothVal(smoothV), lastPeakTmp(lastPeak), lastValTmp(lastVal), type(t), filaLeituras(capacity1), filaSmooth(capacity2) {}
 };
 SensorPz sensorPz[numSensors] = {
-    {0, 0, 0, 0, 0, 'A'},
-    {0, 0, 0, 0, 0, 'B'},
-    {0, 0, 0, 0, 0, 'A'},
-    {0, 0, 0, 0, 0, 'B'},
-    {0, 0, 0, 0, 0, 'A'},
-    {0, 0, 0, 0, 0, 'B'},
-    {0, 0, 0, 0, 0, 'A'},
-    {0, 0, 0, 0, 0, 'B'}
+    { 0, 0, 0, 0, 'A'},
+    { 0, 0, 0, 0, 'B'},
+    { 0, 0, 0, 0, 'A'},
+    { 0, 0, 0, 0, 'B'},
+    { 0, 0, 0, 0, 'A'},
+    { 0, 0, 0, 0, 'B'},
+    { 0, 0, 0, 0, 'A'},
+    { 0, 0, 0, 0, 'B'}
 };
 
 const int numSensors = 8;
@@ -62,9 +130,9 @@ void setup() {
         cbi(ADCSRA,ADPS0) ;
     #endif
     Serial.begin(115200);
-    analogReference(INTERNAL1V1);  // Use the internal 1.1V reference voltage
+    analogReference(INTERNAL2V56);  // Use the internal 2,56V reference voltage
     sampling_period_us = round(1000000 * (1.0 / SAMPLING_FREQUENCY));
-    Timer1.Initialize(intervaloMedicao * 1000); //interrupção para rodar leituras no dominio do tempo
+    Timer1.initialize(intervaloMedicao * 1000); //interrupção para rodar leituras no dominio do tempo
     Timer1.attachInterrupt(timerIsr);
 }
 
@@ -93,7 +161,7 @@ void funcTempoSlo(){
     for (int i = 0; i < numSensors; i++) {
         Serial.print(analogPins[i]);
         Serial.print(",");
-        Serial.print(sensorPz[i].smoothVals);
+        Serial.print(sensorPz[i].smoothVal);
         if (i < numSensors - 1) {
             Serial.print(","); 
         }
@@ -102,14 +170,14 @@ void funcTempoSlo(){
 }
 
 void funcTempoFast(int i, int newValue) {                       //atualiza o máximo valor desde o último nulo (menor que 2)
-    sensorPz[i].smoothVals = sensorPz[i].maxVals * decayFactor; //caso haja uma leitura não nula, smoothVals é atualizado 
-    if (newValue > sensorPz[i].maxVals) {                       //da diferença entre o máximo e o novo valor multiplicado por adjustFactor
-        sensorPz[i].smoothVals = newValue;
-        if (newValue > sensorPz[i].maxVals){sensorPz[i].maxVals = newValue;lastPeakTmp = micros();return;}//finaliza se for maior que o ultimo pico
+    sensorPz[i].smoothVal = sensorPz[i].maxVal * decayFactor; //caso haja uma leitura não nula, smoothVal é atualizado 
+    if (newValue > sensorPz[i].maxVal) {                       //da diferença entre o máximo e o novo valor multiplicado por adjustFactor
+        sensorPz[i].smoothVal = newValue;
+        if (newValue > sensorPz[i].maxVal){sensorPz[i].maxVal = newValue;sensorPz[i].lastPeakTmp = micros();return;}//finaliza se for maior que o ultimo pico
     }else{
-        if (sensorPz[i].smoothVals < 2) {sensorPz[i].maxVals = 0;return;}//finaliza se for zero
-        sensorPz[i].smoothVals = sensorPz[i].smoothVals + (sensorPz[i].maxVals - newValue) * adjustFactor;
-        lastValTmp = micros();
+        if (sensorPz[i].smoothVal < 2) {sensorPz[i].maxVal = 0;return;}//finaliza se for zero
+        sensorPz[i].smoothVal = sensorPz[i].smoothVal + (sensorPz[i].maxVal - newValue) * adjustFactor;
+        sensorPz[i].lastValTmp = micros();
     }
     return;
 }
@@ -158,7 +226,11 @@ void performFFT() {
     Serial.println("---");  // Separator between readings
 }
 
-class Queue;{
+#ifndef INT_MIN
+#define INT_MIN (-32768) // Add this line if using Arduino environment
+#endif
+/*
+class Queue{
     public:
         int front, rear, size;
         unsigned capacity;
@@ -168,7 +240,7 @@ class Queue;{
             this->capacity = capacity;
             front = size = 0;
             rear = capacity - 1;
-            array = new int[(this->capacity];
+            array = new int[this->capacity];
         }
         ~Queue(){
             delete[] array;
@@ -215,4 +287,4 @@ class Queue;{
             }
             return array[rear];
         }
-};
+};*/
